@@ -1,15 +1,93 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>SOULUI10</title>
-    <link rel="icon" type="image/x-icon" href="media/favicon.ico">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOULUI10</title>
+  <link rel="icon" type="image/x-icon" href="media/favicon.ico">
+  <style>
+    /* Body styling */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      overflow: hidden;
+    }
 
-  </head>
+    /* Glass-style top bar */
+    #topbar {
+      width: 100%;
+      padding: 15px 0;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    #time {
+      font-size: 2em;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* Main content area */
+    #content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #content h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      color: #fff;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    }
+
+    #content p {
+      font-size: 1.2em;
+      max-width: 600px;
+      line-height: 1.5;
+      color: #eee;
+    }
+  </style>
+</head>
 <body>
   <div id="topbar">
-    <div class="topbaritem">
-      <p id="time">00:00</p>
-    </div>
+    <p id="time">00:00</p>
   </div>
+
+  <div id="content">
+    <h1>Welcome to SOULUI10</h1>
+    <p>Your modern, sleek OS-inspired interface. Everything updates live, including the clock above!</p>
+  </div>
+
+  <script>
+    function updateTime() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
 </body>
 </html>
